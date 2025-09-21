@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You My Love</title>
+  <style>
+    body {
+      font-family: 'Dancing Script', cursive;
+      background-color: #E6E6FA; /* lavender */
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 700px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    }
+    h1, h2 {
+      color: purple;
+    }
+    p {
+      color: #4B0082;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      margin: 5px;
+    }
+    input {
+      border: 1px solid #aaa;
+      text-align: center;
+    }
+    button {
+      background: purple;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #800080;
+    }
+    audio {
+      margin-top: 15px;
+      width: 100%;
+    }
+  </style>
+  <!-- Romantic Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container" id="password-box">
+    <h2>💜 Enter the Secret Code 💜</h2>
+    <input type="password" id="secret" placeholder="Enter password...">
+    <button onclick="checkPassword()">Open</button>
+  </div>
+
+  <!-- Letter Section -->
+  <div id="letter" class="container" style="display:none;">
+    <h2>💌 Hi Lovey 💌</h2>
+    <p>
+      Hi lovey, I know lately it's been hard for both of us pero u still choose me always :&lt;<br><br>
+      Thank you for never giving up on us kahit na may mga times na parang ang bigat at ang hirap.  
+      I know I’m not perfect and I make mistakes, but you still choose to stay, to understand, and to love me.  
+      That means so much to me more than I can ever put into words.<br><br>
+      Ikaw yung safe place ko, the one I want to run to no matter what happens.  
+      Kahit anong hirap, kahit ilang tampuhan, ikaw at ikaw pa rin yung pipiliin ko.  
+      I promise to love you through the hard days, celebrate with you on the good days,  
+      and hold on to you every single day in between.<br><br>
+      Mahal na mahal kita, always and forever. 💕
+    </p>
+    <button onclick="showSongs()">Next ➡️</button>
+  </div>
+
+  <!-- Playlist Section -->
+  <div id="playlist" class="container" style="display:none;">
+    <h2>🎶 Our Songs 🎶</h2>
+    <p>Playlist</p>
+    <audio id="bg-music" controls></audio><br>
+    <button onclick="playSong('songs/pag-ibig-ikaw-at-ako.mp3')">Pag-ibig Ikaw at Ako - Earl Agustin</button><br>
+    <button onclick="playSong('songs/museo.mp3')">Museo</button><br>
+    <button onclick="playSong('songs/kusapiling-b.mp3')">Kusapiling B - Anthony Meneses</button><br>
+    <button onclick="playSong('songs/dito-ka-sakin.mp3')">Dito Ka Sakin - Earl Agustin</button>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById("secret").value;
+      if (input === "luvleyfey") {
+        document.getElementById("password-box").style.display = "none";
+        document.getElementById("letter").style.display = "block";
+      } else {
+        alert("Wrong password, try again!");
+      }
+    }
+
+    function showSongs() {
+      document.getElementById("letter").style.display = "none";
+      document.getElementById("playlist").style.display = "block";
+      playSong('songs/pag-ibig-ikaw-at-ako.mp3'); // autoplay first song
+    }
+
+    function playSong(file) {
+      const music = document.getElementById("bg-music");
+      music.src = file;
+      music.play().catch(err => {
+        console.log("Autoplay blocked, user must press play:", err);
+      });
+    }
+  </script>
+
+</body>
+</html>
